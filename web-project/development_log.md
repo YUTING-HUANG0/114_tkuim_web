@@ -1,5 +1,34 @@
 # 開發進度日誌 (Development Log)
 
+## 2025-12-24 (Day 3 - 12/26 進度提前實作)
+
+### Status Update
+Frontend 基礎環境與認證頁面已完成開發。
+
+### Completed Tasks
+1.  **前端初始化**:
+    - 使用 `Vite + Vue 3` 建立專案。
+    - 安裝核心套件: `vue-router`, `pinia`, `axios`。
+    - 建立專案結構: `src/views`, `src/services`, `src/assets`, `src/components`。
+
+2.  **API 串接模組**:
+    - `services/api.js`: 封裝 Axios 實例，設定 `BaseURL` 與 JWT Token Interceptor (攔截器)。
+    - `services/auth.js`: 封裝後端登入/註冊 API 呼叫。
+
+3.  **UI/UX 設計**:
+    - `assets/main.css`: 實作極簡風格 Design System (Color tokens, Utility classes)。
+    - **登入頁面 (LoginView)**: 包含表單驗證、錯誤提示與載入狀態。
+    - **註冊頁面 (RegisterView)**: 包含密碼確認邏輯與自動登入。
+    - **主控台 (DashboardView)**: 基礎歡迎頁面與身分驗證檢查 (Auth Guard)。
+
+4.  **路由管理**:
+    - 設定路由表與與導航守衛 (`beforeEach`)，防止未登入用戶訪問受保護頁面。
+
+### Next Steps (for 12/27)
+- [ ] **核心功能全端串接**:
+    - 實作主控台的「匿名投稿」與「隨機抽取」功能。
+    - 串接 `confessionService` API。
+
 ## 2025-12-24 (Day 2 - 12/25 進度提前實作)
 
 ### Status Update
@@ -25,7 +54,3 @@ Backend 核心架構與 API 已完成初步開發。
 4.  **檔案與程式碼品質**:
     - 修正 ESLint 檔案命名大小寫問題 (`appError.js` -> `AppError.js`)。
     - 更新 `server.js` 掛載路由與全域錯誤處理中間件。
-
-### Next Steps (for 12/26)
-- [ ] **前端初始化**: 使用 Vite 建立 Vue 專案。
-- [ ] **頁面開發**: 實作登入與註冊頁面，並串接今日完成的 Auth API。

@@ -27,14 +27,14 @@
     - [x] 建立 JWT 驗證 Middleware (Protect Route)
 
 ## 3. 前端開發 (Frontend - Vue)
-- [ ] **初始化**
-    - [ ] 使用 Vite 建立 Vue 專案
-    - [ ] 安裝與設定路由 (Vue Router)
-    - [ ] 安裝狀態管理 (Pinia - 若需要)
-    - [ ] 設定 Axios (Base URL, Interceptors for JWT)
-- [ ] **UI/UX 設計**
-    - [ ] 設定基礎 CSS/Design System (Responsive)
-    - [ ] 設計登入/註冊頁面
+- [x] **初始化**
+    - [x] 使用 Vite 建立 Vue 專案
+    - [x] 安裝與設定路由 (Vue Router)
+    - [x] 安裝狀態管理 (Pinia - 若需要)
+    - [x] 設定 Axios (Base URL, Interceptors for JWT)
+- [x] **UI/UX 設計**
+    - [x] 設定基礎 CSS/Design System (Responsive)
+    - [x] 設計登入/註冊頁面
     - [ ] 設計主控台/告解室頁面
 
 ## 4. 核心功能實作 (Core Features - CRUD)
