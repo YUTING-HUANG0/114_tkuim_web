@@ -11,20 +11,20 @@
     - [ ] 測試 MongoDB 連線與數據持久化 (Volume)
 
 ## 2. 後端開發 (Backend - Express)
-- [ ] **基礎架構**
-    - [ ] 初始化 Express 專案
-    - [ ] 設定環境變數 (.env)
-    - [ ] 設定 CORS 與 Helmet 安全性
-- [ ] **資料庫整合**
-    - [ ] 安裝 Mongoose 並建立連線設定
-    - [ ] 設計 Schema/Model (User, Confession)
-- [ ] **架構設計 (Service Pattern)**
-    - [ ] 建立 Controller 層 (接收請求/回應)
-    - [ ] 建立 Service 層 (商業邏輯、隨機演算法)
-    - [ ] 建立 Utils (HTTP 狀態碼常數、統一錯誤處理機制)
-- [ ] **認證機制 (Authentication)**
-    - [ ] 實作 JWT 簽發 (Login)
-    - [ ] 建立 JWT 驗證 Middleware (Protect Route)
+- [x] **基礎架構**
+    - [x] 初始化 Express 專案
+    - [x] 設定環境變數 (.env)
+    - [x] 設定 CORS 與 Helmet 安全性
+- [x] **資料庫整合**
+    - [x] 安裝 Mongoose 並建立連線設定
+    - [x] 設計 Schema/Model (User, Confession)
+- [x] **架構設計 (Service Pattern)**
+    - [x] 建立 Controller 層 (接收請求/回應)
+    - [x] 建立 Service 層 (商業邏輯、隨機演算法)
+    - [x] 建立 Utils (HTTP 狀態碼常數、統一錯誤處理機制)
+- [x] **認證機制 (Authentication)**
+    - [x] 實作 JWT 簽發 (Login)
+    - [x] 建立 JWT 驗證 Middleware (Protect Route)
 
 ## 3. 前端開發 (Frontend - Vue)
 - [ ] **初始化**
@@ -42,9 +42,9 @@
     - [ ] 玩家登入/註冊功能
 - [ ] **C - 匿名投稿 (Create)**
     - [ ] 前端投稿表單
-    - [ ] 後端接收並儲存 (關聯 User 但保持匿名性設計)
+    - [x] 後端接收並儲存 (關聯 User 但保持匿名性設計)
 - [ ] **R - 隨機選題 (Read)**
-    - [ ] 後端 Service 實作隨機篩選演算法 (排除自己、權重等)
+    - [x] 後端 Service 實作隨機篩選演算法 (排除自己、權重等)
     - [ ] 前端展示抽取的秘密
 - [ ] **U - 內容更正 (Update)**
     - [ ] 查詢個人歷史投稿列表
