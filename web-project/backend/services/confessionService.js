@@ -17,13 +17,13 @@ exports.getRandomConfession = async (userId) => {
     ]);
 
     if (!confession || confession.length === 0) {
-        // Fallback if no other confessions exist (or only own exist)
-        // Maybe return null or a specific message? 
-        // For MVP, if empty, we might just look for ANY or return null.
-        // Let's try to get ANY if the filtered one is empty strictly for testing purposes if user is alone
-        // But logically, "Confession" implies hearing others.
         return null;
     }
 
     return confession[0];
+};
+
+exports.getUserConfessions = async (userId) => {
+    const confessions = await Confession.find({ author: userId }).sort({ createdAt: -1 });
+    return confessions;
 };

@@ -9,5 +9,6 @@ router.use(authMiddleware.protect);
 
 router.post('/', confessionController.createConfession);
 router.get('/random', confessionController.getRandomConfession);
+router.get('/my', confessionController.getMyConfessions);
 
 module.exports = router;

@@ -1,5 +1,45 @@
 # 開發進度日誌 (Development Log)
 
+## 2025-12-24 (Day 4 - 12/27 進度提前實作)
+
+### Status Update
+完成核心功能的**前後端串接**，使用者已可進行告解、隨機抽取他人秘密，並查看自己的投稿紀錄。
+
+### Completed Tasks
+1.  **後端 API 擴充**:
+    - 新增 `GET /api/confessions/my`: 查詢當前登入使用者的所有告解紀錄 (時間倒序)。
+    - 更新 `ConfessionService` 與 `ConfessionController` 支援此功能。
+    - 確保路由 `/my` 受到 `AuthGuard` 保護。
+
+2.  **前端 Service 層**:
+    - 建立 `services/confession.js`，封裝所有與告解相關的 API 請求。
+
+3.  **主控台功能實作 (`DashboardView`)**:
+    - **Header**: 顯示使用者名稱與登出按鈕。
+    - **我要告解區塊 (Create)**:
+        - 實作文字輸入框 (字數統計)。
+        - 串接 `createConfession` API，發送成功後自動刷新列表。
+    - **聆聽秘密區塊 (Read)**:
+        - 實作「抽取秘密」按鈕，串接 `getRandomConfession` API。
+        - 顯示隨機抽取的秘密內容與發佈時間。
+    - **歷史紀錄區塊**:
+        - 自動載入使用者的投稿列表 (`loadMyConfessions`)。
+        - 顯示每一則告解的內容、時間與觀看次數 (目前預設為0)。
+
+4.  **UI 優化**:
+    - 使用 CSS Grid 進行響應式排版 (Action Cards 並排或堆疊)。
+    - 增加 Loading 狀態與錯誤訊息提示。
+
+### Next Steps (for 12/28)
+- [ ] **進階編輯與刪除**:
+    - 實作「編輯告解」功能。
+    - 實作「刪除告解」功能 (軟刪除或物理刪除)。
+- [ ] **最終測試與優化**:
+    - 檢查行動版排版。
+    - 進行完整的 User Flow 測試。
+
+---
+
 ## 2025-12-24 (Day 3 - 12/26 進度提前實作)
 
 ### Status Update

@@ -25,7 +25,7 @@ exports.getRandomConfession = catchAsync(async (req, res, next) => {
     if (!confession) {
         return res.status(200).json({
             status: 'success',
-            message: 'No confessions found from other users.',
+            message: '目前沒有其他人的秘密可供讀取，請稍後再試。',
             data: null
         });
     }
@@ -34,6 +34,18 @@ exports.getRandomConfession = catchAsync(async (req, res, next) => {
         status: 'success',
         data: {
             confession
+        }
+    });
+});
+
+exports.getMyConfessions = catchAsync(async (req, res, next) => {
+    const confessions = await confessionService.getUserConfessions(req.user._id);
+
+    res.status(200).json({
+        status: 'success',
+        results: confessions.length,
+        data: {
+            confessions
         }
     });
 });
