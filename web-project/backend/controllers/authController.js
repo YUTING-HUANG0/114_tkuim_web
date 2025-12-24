@@ -2,8 +2,10 @@ const authService = require('../services/authService');
 const catchAsync = require('../utils/catchAsync');
 
 exports.register = catchAsync(async (req, res, next) => {
+    // 調用 Service
     const { user, token } = await authService.register(req.body);
 
+    // 成功回傳
     res.status(201).json({
         status: 'success',
         token,
