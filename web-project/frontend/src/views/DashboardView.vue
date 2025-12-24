@@ -62,10 +62,22 @@
         <div v-if="myConfessions.length === 0" class="text-muted">尚未發佈任何告解。</div>
         <div v-else class="history-grid">
           <div v-for="item in myConfessions" :key="item._id" class="card history-card">
-            <p class="mb-2">{{ item.content }}</p>
-            <div class="flex justify-between items-center mt-2">
-               <small class="text-muted">{{ formatDate(item.createdAt) }}</small>
-               <span class="view-tag">👀 {{ item.views || 0 }}</span>
+             <div v-if="editingId === item._id">
+                <textarea v-model="editingContent" class="form-input mb-2" rows="3"></textarea>
+                <div class="flex justify-end gap-2">
+                   <button @click="cancelEdit" class="btn btn-sm btn-outline">取消</button>
+                   <button @click="saveEdit(item._id)" class="btn btn-sm btn-primary">儲存</button>
+                </div>
+             </div>
+             <div v-else>
+                <p class="mb-2">{{ item.content }}</p>
+                <div class="flex justify-between items-center mt-2">
+                   <small class="text-muted">{{ formatDate(item.createdAt) }}</small>
+                   <div class="flex gap-2">
+                      <button @click="startEdit(item)" class="text-sm text-primary hover:underline">編輯</button>
+                      <button @click="deleteItem(item._id)" class="text-sm text-danger hover:underline">刪除</button>
+                   </div>
+                </div>
             </div>
           </div>
         </div>
@@ -90,6 +102,10 @@ const randomConfession = ref(null);
 const loadingRandom = ref(false);
 
 const myConfessions = ref([]);
+
+// Edit state
+const editingId = ref(null);
+const editingContent = ref('');
 
 onMounted(() => {
   const userStr = localStorage.getItem('user');
@@ -157,6 +173,37 @@ const loadMyConfessions = async () => {
     }
   } catch (err) {
     console.error('Failed to load history', err);
+  }
+};
+
+const startEdit = (item) => {
+  editingId.value = item._id;
+  editingContent.value = item.content;
+};
+
+const cancelEdit = () => {
+  editingId.value = null;
+  editingContent.value = '';
+};
+
+const saveEdit = async (id) => {
+  try {
+    await confessionService.updateConfession(id, editingContent.value);
+    editingId.value = null;
+    loadMyConfessions(); // Reload list
+  } catch (err) {
+    alert(err.response?.data?.message || '更新失敗');
+  }
+};
+
+const deleteItem = async (id) => {
+  if (!confirm('確定要刪除這則告解嗎？此操作無法復原。')) return;
+
+  try {
+    await confessionService.deleteConfession(id);
+    loadMyConfessions();
+  } catch (err) {
+    alert(err.response?.data?.message || '刪除失敗');
   }
 };
 
@@ -240,10 +287,12 @@ const formatDate = (dateString) => {
 .mb-2 { margin-bottom: 0.5rem; }
 .flex { display: flex; }
 .justify-between { justify-content: space-between; }
+.justify-end { justify-content: flex-end; }
 .items-center { align-items: center; }
 .w-full { width: 100%; }
 .block { display: block; }
 .py-4 { padding-top: 1rem; padding-bottom: 1rem; }
+.gap-2 { gap: 0.5rem; }
 
 .text-danger { color: var(--danger); }
 .text-success { color: #10b981; }
@@ -253,5 +302,10 @@ const formatDate = (dateString) => {
   background: #f1f5f9;
   padding: 0.2rem 0.5rem;
   border-radius: 1rem;
+}
+
+.btn-sm {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
 }
 </style>

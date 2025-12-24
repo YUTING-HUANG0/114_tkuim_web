@@ -46,14 +46,14 @@
 - [x] **R - 隨機選題 (Read)**
     - [x] 後端 Service 實作隨機篩選演算法 (排除自己、權重等)
     - [x] 前端展示抽取的秘密
-- [ ] **U - 內容更正 (Update)**
+- [x] **U - 內容更正 (Update)**
     - [x] 查詢個人歷史投稿列表
-    - [ ] 編輯功能實作 (權限校驗: 僅限本人)
-- [ ] **D - 閱後即焚 (Delete)**
-    - [ ] 實作物理刪除 (Physical Delete) API
-    - [ ] 前端觸發刪除後的動畫與狀態更新
+    - [x] 編輯功能實作 (權限校驗: 僅限本人)
+- [x] **D - 閱後即焚 (Delete)**
+    - [x] 實作物理刪除 (Physical Delete) API
+    - [x] 前端觸發刪除後的動畫與狀態更新
 
 ## 5. 測試與優化 (Testing & Optimization)
-- [ ] 完整的 API Postman 測試
-- [ ] 錯誤邊界測試 (Error Handling Verification)
-- [ ] 前端 RWD 測試
+- [x] 完整的 API Postman 測試
+- [x] 錯誤邊界測試 (Error Handling Verification)
+- [x] 前端 RWD 測試

@@ -27,3 +27,26 @@ exports.getUserConfessions = async (userId) => {
     const confessions = await Confession.find({ author: userId }).sort({ createdAt: -1 });
     return confessions;
 };
+
+exports.updateConfession = async (userId, confessionId, content) => {
+    const confession = await Confession.findOne({ _id: confessionId, author: userId });
+
+    if (!confession) {
+        throw new AppError('找不到該告解紀錄或您沒有權限編輯', 404);
+    }
+
+    confession.content = content;
+    await confession.save();
+
+    return confession;
+};
+
+exports.deleteConfession = async (userId, confessionId) => {
+    const confession = await Confession.findOneAndDelete({ _id: confessionId, author: userId });
+
+    if (!confession) {
+        throw new AppError('找不到該告解紀錄或您沒有權限刪除', 404);
+    }
+
+    return null;
+};

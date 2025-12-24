@@ -1,5 +1,40 @@
 # 開發進度日誌 (Development Log)
 
+## 2025-12-24 (Day 5 - 12/28 進度提前實作)
+
+### Status Update
+專案的所有核心功能、進階功能與 UI 優化皆已完成，準備上線與交付。
+
+### Completed Tasks
+1.  **進階 CRUD 功能**:
+    - **更新 (Update)**:
+        - Backend: 新增 `PATCH /api/confessions/:id` API。
+        - Service: `updateConfession` 實作權限檢查 (確保是本人才能編輯)。
+        - Frontend: 在歷史紀錄卡片中實作「編輯模式」，可原地修改內容。
+    - **刪除 (Delete)**:
+        - Backend: 新增 `DELETE /api/confessions/:id` API。
+        - Service: `deleteConfession` 實作權限檢查。
+        - Frontend: 刪除確認對話框，刪除後自動從列表中移除。
+
+2.  **前端體驗優化**:
+    - **UI 響應式**: 優化 CSS Grid 在手機與桌面的排版。
+    - **交互細節**: 增加編輯/儲存/取消的按鈕狀態切換。
+
+3.  **系統測試與驗收**:
+    - **API 測試**: 確認 Auth, Create, Read (Random/My), Update, Delete 介面均正常運作且權限控管正確。
+    - **User Flow**:
+        1. 註冊/登入 -> 成功轉導 Dashboard。
+        2. 發佈告解 -> 顯示成功訊息 -> 歷史紀錄自動更新。
+        3. 編輯告解 -> 內容即時更新。
+        4. 刪除告解 -> 列表項目消失。
+        5. 聆聽秘密 -> 隨機顯示他人內容。
+        6. 登出 -> 清除 Token 並返回登入頁。
+
+### Summary
+本專案按照 `todo.md` 與 `task.md` 規劃，在時限內(甚至提前)完成了所有開發項目。系統具備完整的前後端分離架構、安全性驗證 (JWT) 與 MongoDB 資料持久化能力。
+
+---
+
 ## 2025-12-24 (Day 4 - 12/27 進度提前實作)
 
 ### Status Update
@@ -37,60 +72,3 @@
 - [ ] **最終測試與優化**:
     - 檢查行動版排版。
     - 進行完整的 User Flow 測試。
-
----
-
-## 2025-12-24 (Day 3 - 12/26 進度提前實作)
-
-### Status Update
-Frontend 基礎環境與認證頁面已完成開發。
-
-### Completed Tasks
-1.  **前端初始化**:
-    - 使用 `Vite + Vue 3` 建立專案。
-    - 安裝核心套件: `vue-router`, `pinia`, `axios`。
-    - 建立專案結構: `src/views`, `src/services`, `src/assets`, `src/components`。
-
-2.  **API 串接模組**:
-    - `services/api.js`: 封裝 Axios 實例，設定 `BaseURL` 與 JWT Token Interceptor (攔截器)。
-    - `services/auth.js`: 封裝後端登入/註冊 API 呼叫。
-
-3.  **UI/UX 設計**:
-    - `assets/main.css`: 實作極簡風格 Design System (Color tokens, Utility classes)。
-    - **登入頁面 (LoginView)**: 包含表單驗證、錯誤提示與載入狀態。
-    - **註冊頁面 (RegisterView)**: 包含密碼確認邏輯與自動登入。
-    - **主控台 (DashboardView)**: 基礎歡迎頁面與身分驗證檢查 (Auth Guard)。
-
-4.  **路由管理**:
-    - 設定路由表與與導航守衛 (`beforeEach`)，防止未登入用戶訪問受保護頁面。
-
-### Next Steps (for 12/27)
-- [ ] **核心功能全端串接**:
-    - 實作主控台的「匿名投稿」與「隨機抽取」功能。
-    - 串接 `confessionService` API。
-
-## 2025-12-24 (Day 2 - 12/25 進度提前實作)
-
-### Status Update
-Backend 核心架構與 API 已完成初步開發。
-
-### Completed Tasks
-1.  **架構優化**:
-    - 建立 `controllers`, `services`, `routes`, `utils`, `middlewares` 資料夾結構。
-    - 實作 Service Pattern 將商業邏輯分離。
-    - 實作統一錯誤處理機制 (`AppError`, `catchAsync`, `globalErrorHandler`)。
-
-2.  **認證系統 (Authentication)**:
-    - 實作 **JWT (JSON Web Token)** 簽發與驗證流程。
-    - `POST /api/auth/register`: 玩家註冊 (密碼加密儲存)。
-    - `POST /api/auth/login`: 玩家登入 (回傳 JWT token)。
-    - `AuthMiddleware`: 保護路由，確保請求帶有有效 Token。
-
-3.  **核心功能 (Core Features)**:
-    - `ConfessionService` & `ConfessionController` 實作。
-    - `POST /api/confessions`: 匿名投稿 (關聯 User ID 但不公開)。
-    - `GET /api/confessions/random`: 隨機抽取一則**非自己發布**的告解內容 (使用 MongoDB Aggregation `$sample`)。
-
-4.  **檔案與程式碼品質**:
-    - 修正 ESLint 檔案命名大小寫問題 (`appError.js` -> `AppError.js`)。
-    - 更新 `server.js` 掛載路由與全域錯誤處理中間件。
