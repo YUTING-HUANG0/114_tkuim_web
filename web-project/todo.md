@@ -3,12 +3,12 @@
 本專案採用 Docker 部署 MongoDB，並以 Express 與 Vue 構建前後端分離架構。核心為匿名 CRUD 功能與 Service Pattern 設計。
 
 ## 1. 環境與基礎建設 (Infrastructure & Setup)
-- [ ] **環境建置**
-    - [ ] 建立專案資料夾結構
-    - [ ] 設定 Git 版本控制 (.gitignore)
+- [x] **環境建置**
+    - [x] 建立專案資料夾結構
+    - [x] 設定 Git 版本控制 (.gitignore)
 - [x] **資料庫 (Database)**
     - [x] 編寫 `docker-compose.yml` 部署 MongoDB
-    - [ ] 測試 MongoDB 連線與數據持久化 (Volume)
+    - [x] 測試 MongoDB 連線與數據持久化 (Volume)
 
 ## 2. 後端開發 (Backend - Express)
 - [x] **基礎架構**
@@ -35,7 +35,7 @@
 - [x] **UI/UX 設計**
     - [x] 設定基礎 CSS/Design System (Responsive)
     - [x] 設計登入/註冊頁面
-    - [ ] 設計主控台/告解室頁面
+    - [x] 設計主控台/告解室頁面
 
 ## 4. 核心功能實作 (Core Features - CRUD)
 - [x] **使用者認證**

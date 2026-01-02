@@ -70,7 +70,7 @@ npm install
 $env:MONGO_URI="mongodb://admin:password123@localhost:27018/privacy-confession?authSource=admin"
 
 # 啟動後端伺服器
-npm start
+npm start // node server.js
 ```
 > 後端伺服器將運行於 `http://localhost:3000`
 
